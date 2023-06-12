@@ -1,18 +1,24 @@
+
+
+class Book {
+    constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    }
+    
+    report() {
+        return (this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read)
+    }
+}
+
 let theHobbit = new Book('The Hobbit', 'Hobbits', '273', 'Read');
 let harryPotter = new Book ('Harry Potter', 'JK Rowling', '100', 'Not read');
 
 let myLibrary = [theHobbit, harryPotter];
 
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.report = function() {
-        return (this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read)
-    }
-}
 
 function addBookToLibrary() {
     let newBook = new Book('title', 'author', 'pages', 'read');
