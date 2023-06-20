@@ -108,6 +108,7 @@ function displayForm() {
     inputTitle.setAttribute("id", "title");
     inputTitle.classList.add('form-input');
     inputTitle.setAttribute("name", "title");
+    inputTitle.required = true;
     form.appendChild(inputTitle);
 
     labelAuthor = document.createElement('label');
@@ -119,6 +120,7 @@ function displayForm() {
     inputAuthor.setAttribute("id", "author");
     inputAuthor.classList.add('form-input');
     inputAuthor.setAttribute('name', 'author');
+    inputAuthor.required = true;
     form.appendChild(inputAuthor);
 
     labelPages = document.createElement('label');
@@ -130,6 +132,7 @@ function displayForm() {
     inputPages.setAttribute("id", "pages");
     inputPages.classList.add('form-input');
     inputPages.setAttribute('name', 'pages');
+    inputPages.required = true;
     form.appendChild(inputPages);
 
     
@@ -145,6 +148,7 @@ function displayForm() {
     inputRead.setAttribute("type", "checkbox");
     inputRead.classList.add('form-checkbox');
     inputRead.setAttribute('name', 'read');
+    
     divRead.appendChild(inputRead);
     form.appendChild(divRead);
 
@@ -157,14 +161,26 @@ function displayForm() {
     submitButton.classList.add('submit');
     divButton.appendChild(submitButton);
     submitButton.addEventListener('click', function(event){
+        let inputs =[inputTitle, inputAuthor, inputPages, inputRead];
+        for(let i = 0; i < inputs.length; i++) {
+               
+        if(inputs[i].validity.valueMissing) {
+            inputs[i].style.border = "thick solid red"
+        } else {
+            inputs[i].style.border = "thick solid green"
+        }
+    }
+
         event.preventDefault()
     });
+    
 
     cancelButton = document.createElement('button');
     cancelButton.textContent = 'Cancel';
     cancelButton.classList.add('cancel');
     divButton.appendChild(cancelButton);
     cancelButton.addEventListener('click', function(event){
+        form.remove();
         event.preventDefault()
     });
 
